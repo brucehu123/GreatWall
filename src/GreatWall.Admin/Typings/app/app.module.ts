@@ -1,4 +1,4 @@
-import { NgModule, Injector, APP_INITIALIZER } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
 //Angular模块
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,17 +11,17 @@ import { AlainThemeModule } from '@delon/theme';
 //语言设置
 import { default as ngLang } from '@angular/common/locales/zh';
 import { registerLocaleData } from '@angular/common';
-registerLocaleData(ngLang, "zh_CN");
+registerLocaleData( ngLang, "zh_CN" );
 
 //图标设置
 import { NZ_ICONS } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
-const icons: IconDefinition[] = Object.keys(AllIcons).map(key => AllIcons[key]);
+const icons: IconDefinition[] = Object.keys( AllIcons ).map( key => AllIcons[key] );
 
 //框架模块
 import { FrameworkModule } from './framework.module';
-import { util,UploadService } from '../util';
+import { util, UploadService, createOidcProviders, OidcAuthorizeConfig } from '../util';
 
 //通用服务
 import { LocalUploadService } from "../common/services/local-upload.service";
@@ -35,19 +35,20 @@ import { HomeModule } from "./home/home.module";
 //根组件
 import { AppComponent } from './app.component';
 
+//登录回调
+import { LoginCallbackComponent } from "./login-callback.component";
+
 //启动服务
 import { StartupService } from "./home/startup/startup.service";
 
-//启动服务工厂
-export function startupServiceFactory( startupService: StartupService ) {
-    return () => startupService.load();
-}
+//授权配置
+import { getAuthorizeConfig } from "../config/authorize-config";
 
 /**
  * 应用根模块
  */
 @NgModule( {
-    declarations: [AppComponent],
+    declarations: [AppComponent, LoginCallbackComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -58,14 +59,10 @@ export function startupServiceFactory( startupService: StartupService ) {
         AppRoutingModule
     ],
     providers: [
-        StartupService,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: startupServiceFactory,
-            deps: [StartupService],
-            multi: true,
-        },
+        { provide: OidcAuthorizeConfig, useFactory: getAuthorizeConfig },
+        ...createOidcProviders(),
         { provide: NZ_ICONS, useValue: icons },
+        StartupService,
         { provide: UploadService, useClass: LocalUploadService }
     ],
     bootstrap: [AppComponent],

@@ -4,7 +4,7 @@ using Util.Applications.Dtos;
 
 namespace GreatWall.Service.Dtos {
     /// <summary>
-    /// 用户数据传输对象
+    /// 用户参数
     /// </summary>
     public class UserDto : DtoBase {
         /// <summary>
@@ -14,10 +14,10 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "用户名" )]
         public string UserName { get; set; }
         /// <summary>
-        /// 安全邮箱
+        /// 电子邮箱
         /// </summary>
         [StringLength( 256 )]
-        [Display( Name = "安全邮箱" )]
+        [Display( Name = "电子邮箱" )]
         public string Email { get; set; }
         /// <summary>
         /// 邮箱已确认
@@ -25,10 +25,10 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "邮箱已确认" )]
         public bool? EmailConfirmed { get; set; }
         /// <summary>
-        /// 安全手机
+        /// 手机号
         /// </summary>
         [StringLength( 64 )]
-        [Display( Name = "安全手机" )]
+        [Display( Name = "手机号" )]
         public string PhoneNumber { get; set; }
         /// <summary>
         /// 手机已确认
@@ -36,9 +36,9 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "手机已确认" )]
         public bool? PhoneNumberConfirmed { get; set; }
         /// <summary>
-        /// 启用两阶段认证
+        /// 启用两步认证
         /// </summary>
-        [Display( Name = "启用两阶段认证" )]
+        [Display( Name = "启用两步认证" )]
         public bool? TwoFactorEnabled { get; set; }
         /// <summary>
         /// 启用
@@ -114,16 +114,6 @@ namespace GreatWall.Service.Dtos {
         /// </summary>
         [Display( Name = "创建人" )]
         public Guid? CreatorId { get; set; }
-        /// <summary>
-        /// 最后修改时间
-        /// </summary>
-        [Display( Name = "最后修改时间" )]
-        public DateTime? LastModificationTime { get; set; }
-        /// <summary>
-        /// 最后修改人
-        /// </summary>
-        [Display( Name = "最后修改人" )]
-        public Guid? LastModifierId { get; set; }
         /// <summary>
         /// 版本号
         /// </summary>

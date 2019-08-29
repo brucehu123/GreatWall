@@ -40,6 +40,7 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
 
 - UI
   - [Ng-Zorro](https://ng.ant.design)
+  - [Ng-Alain](https://ng-alain.github.io/ng-alain/)
 
 ## 作者
 
@@ -63,7 +64,7 @@ GreatWall是一个.net core平台下的权限管理系统，使用Util应用框�
 
 ## 开源地址
 
-https://github.com/UtilCore/GreatWall
+https://github.com/Util-Core/GreatWall
 
 ## License
 
@@ -77,4 +78,5 @@ https://github.com/UtilCore/GreatWall
 
 ## 参考
 
+- [IdentityServer4.Admin](https://github.com/skoruba/IdentityServer4.Admin)
 - [IdentityServer4.Admin](https://github.com/zlzforever/IdentityServer4.Admin)

@@ -61,6 +61,7 @@ namespace GreatWall.Domain.Services.Implements {
             if( user == null )
                 throw new ArgumentNullException( nameof( user ) );
             user.Init();
+            user.Validate();
             var result = await Manager.CreateAsync( user, password );
             result.ThrowIfError();
             user.SetPassword( password, Options?.Value.Store.StoreOriginalPassword );
@@ -261,6 +262,16 @@ namespace GreatWall.Domain.Services.Implements {
         /// <param name="newPassword">新密码</param>
         public async Task ChangePasswordAsync( User user, string currentPassword, string newPassword ) {
             var result = await Manager.ChangePasswordAsync( user, currentPassword, newPassword );
+            result.ThrowIfError();
+        }
+
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="user">用户</param>
+        /// <param name="newPassword">新密码</param>
+        public async Task ChangePasswordAsync( User user, string newPassword ) {
+            var result = await Manager.UpdatePasswordAsync( user, newPassword );
             result.ThrowIfError();
         }
 

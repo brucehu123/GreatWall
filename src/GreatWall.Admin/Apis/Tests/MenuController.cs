@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using GreatWall.Menus;
+using GreatWall.Service.Dtos.NgAlain;
 using Microsoft.AspNetCore.Mvc;
 using Util.Webs.Controllers;
 
 namespace GreatWall.Apis.Tests {
     /// <summary>
-    /// 菜单控制器
+    /// 测试菜单控制器
     /// </summary>
     public class MenuController : WebApiControllerBase {
         /// <summary>
@@ -30,8 +30,6 @@ namespace GreatWall.Apis.Tests {
         private MenuInfo GetMainMenu() {
             return new MenuInfo {
                 Text = "主菜单",
-                Group = true,
-                HideInBreadcrumb = true,
                 Children = {
                     new MenuInfo {
                         Text = "仪表盘",
@@ -39,7 +37,6 @@ namespace GreatWall.Apis.Tests {
                         Children = {
                             new MenuInfo {
                                 Text = "默认页",
-                                Icon = "anticon anticon-dashboard",
                                 Link = "/dashboard/v1",
                             }
                         }
@@ -54,12 +51,31 @@ namespace GreatWall.Apis.Tests {
         private MenuInfo GetDemoMenu() {
             return new MenuInfo {
                 Text = "系统菜单",
-                Group = true,
                 Children = {
                     new MenuInfo {
+                        Text = "声明",
+                        Icon = "anticon anticon-database",
+                        Link = "/systems/claim"
+                    },
+                    new MenuInfo {
                         Text = "应用程序",
-                        Icon = "cloud",
+                        Icon = "anticon anticon-database",
                         Link = "/systems/application"
+                    },
+                    new MenuInfo {
+                        Text = "用户",
+                        Icon = "anticon anticon-user",
+                        Link = "/systems/user"
+                    },
+                    new MenuInfo {
+                        Text = "角色",
+                        Icon = "anticon anticon-team",
+                        Link = "/systems/role",
+                    },
+                    new MenuInfo {
+                        Text = "模块",
+                        Icon = "anticon anticon-menu-fold",
+                        Link = "/systems/module"
                     }
                 }
             };

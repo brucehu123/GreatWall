@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
 using Util.Domains;
 using Util.Domains.Auditing;
 
@@ -12,11 +10,6 @@ namespace GreatWall.Domain.Models {
     /// </summary>
     [DisplayName( "用户" )]
     public partial class User : AggregateRoot<User>, IDelete, IAudited {
-        /// <summary>
-        /// 声明列表
-        /// </summary>
-        private readonly List<Claim> _claims;
-
         /// <summary>
         /// 初始化用户
         /// </summary>
@@ -28,7 +21,6 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         /// <param name="id">用户标识</param>
         public User( Guid id ) : base( id ) {
-            _claims = new List<Claim>();
         }
 
         /// <summary>
@@ -136,7 +128,7 @@ namespace GreatWall.Domain.Models {
         /// 登陆失败次数
         /// </summary>
         [DisplayName( "登陆失败次数" )]
-        public int AccessFailedCount { get; set; }
+        public int? AccessFailedCount { get; set; }
         /// <summary>
         /// 启用两阶段认证
         /// </summary>
@@ -176,9 +168,9 @@ namespace GreatWall.Domain.Models {
         [DisplayName( "创建时间" )]
         public DateTime? CreationTime { get; set; }
         /// <summary>
-        /// 创建人
+        /// 创建人标识
         /// </summary>
-        [DisplayName( "创建人" )]
+        [DisplayName( "创建人标识" )]
         public Guid? CreatorId { get; set; }
         /// <summary>
         /// 最后修改时间
@@ -186,9 +178,9 @@ namespace GreatWall.Domain.Models {
         [DisplayName( "最后修改时间" )]
         public DateTime? LastModificationTime { get; set; }
         /// <summary>
-        /// 最后修改人
+        /// 最后修改人标识
         /// </summary>
-        [DisplayName( "最后修改人" )]
+        [DisplayName( "最后修改人标识" )]
         public Guid? LastModifierId { get; set; }
         /// <summary>
         /// 是否删除

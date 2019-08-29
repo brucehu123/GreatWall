@@ -106,6 +106,15 @@ namespace GreatWall {
         }
         
         /// <summary>
+        ///   查找类似 资源标识 {0} 已存在 的本地化字符串。
+        /// </summary>
+        public static string DuplicateUri {
+            get {
+                return ResourceManager.GetString("DuplicateUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户名 {0} 已存在 的本地化字符串。
         /// </summary>
         public static string DuplicateUserName {
@@ -120,6 +129,15 @@ namespace GreatWall {
         public static string InvalidAccountOrPassword {
             get {
                 return ResourceManager.GetString("InvalidAccountOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 无效的应用程序 的本地化字符串。
+        /// </summary>
+        public static string InvalidApplication {
+            get {
+                return ResourceManager.GetString("InvalidApplication", resourceCulture);
             }
         }
         
@@ -241,6 +259,15 @@ namespace GreatWall {
         }
         
         /// <summary>
+        ///   查找类似 请选择角色 的本地化字符串。
+        /// </summary>
+        public static string RoleIsEmpty {
+            get {
+                return ResourceManager.GetString("RoleIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 您的帐户已被冻结，请联系管理员 的本地化字符串。
         /// </summary>
         public static string UserIsDisabled {
@@ -255,6 +282,15 @@ namespace GreatWall {
         public static string UserNameIsEmpty {
             get {
                 return ResourceManager.GetString("UserNameIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 至少选择一个用户 的本地化字符串。
+        /// </summary>
+        public static string UsersIsEmpty {
+            get {
+                return ResourceManager.GetString("UsersIsEmpty", resourceCulture);
             }
         }
     }
